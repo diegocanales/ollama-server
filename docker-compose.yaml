@@ -3,7 +3,7 @@ version: '3.8'
 services:
   ollama:
     volumes:
-      - ollama:/root/.ollama
+      - ${OLLAMA_DIR}:/root/.ollama
     container_name: ollama
     pull_policy: always
     tty: true
@@ -22,7 +22,8 @@ services:
     image: ghcr.io/open-webui/open-webui:v0.1.123-cuda
     container_name: open-webui
     volumes:
-      - open-webui:/app/backend/data
+      - ${OPEN_WEBUI_DIR}:/app/backend/data
+      - ${OLLAMA_DIR}:/root/.ollama
     depends_on:
       - ollama
     ports:
@@ -41,8 +42,3 @@ services:
               count: all
               capabilities:
                 - gpu
-
-
-volumes:
-  ollama: {}
-  open-webui: {}
