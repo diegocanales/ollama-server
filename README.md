@@ -1,4 +1,4 @@
-# Project Documentation
+# Ollama - OpenWeb UI server
 
 This project uses Docker Compose to manage two services: `ollama` and `open-webui`.
 
